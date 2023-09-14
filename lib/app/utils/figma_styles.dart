@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 class FigmaColors {
   const FigmaColors();
-
+  static const Color surface = Color(0xff09090A);
   static const Color purplepurple50 = Color(0xfff3eefc);
   static const Color purplepurple100 = Color(0xffd8cbf7);
   static const Color purplepurple200 = Color(0xffc6b2f3);
@@ -95,6 +95,6 @@ class FigmaTextStyles {
   static TextStyle history = GoogleFonts.roboto(
     fontSize: 14,
     fontWeight: FontWeight.w600,
-     height: 21 / 14,
+    height: 21 / 14,
   );
 }
