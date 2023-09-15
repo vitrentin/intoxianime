@@ -1,5 +1,3 @@
-// ignore_for_file: lines_longer_than_80_chars
-
 import 'package:flutter/material.dart';
 import 'package:intoxianime/app/utils/figma_styles.dart';
 
@@ -45,7 +43,8 @@ class CardNewWidget extends StatelessWidget {
               ),
               const SizedBox(height: 16),
               Text(
-                'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque lorem ipsun dolor, lorem ipsum doooolor aaa',
+                '''
+At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque lorem ipsun dolor, lorem ipsum doooolor aaa''',
                 maxLines: 3,
                 overflow: TextOverflow.ellipsis,
                 style: FigmaTextStyles.about.copyWith(
