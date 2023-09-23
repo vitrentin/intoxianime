@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:intoxianime/app/modules/home/data/model/news_model.dart';
 import 'package:intoxianime/app/utils/figma_styles.dart';
+import 'package:html_unescape/html_unescape.dart';
 
 class CardNewWidget extends StatelessWidget {
-  const CardNewWidget({super.key});
+  final NewsModel news;
+  const CardNewWidget({
+    super.key,
+    required this.news,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +30,7 @@ class CardNewWidget extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
-                '13 de Abril de 2022',
+                news.dateTime,
                 style: FigmaTextStyles.label,
               ),
               const SizedBox(height: 14),
@@ -36,15 +42,21 @@ class CardNewWidget extends StatelessWidget {
                 ),
                 clipBehavior: Clip.antiAlias,
                 child: Image.network(
-                  'https://picsum.photos/500/800',
+                  news.urlImage,
                   width: double.infinity,
                   fit: BoxFit.fitWidth,
                 ),
               ),
+              const SizedBox(height: 8),
+              Text(
+                news.title,
+                style: FigmaTextStyles.title.copyWith(
+                  color: FigmaColors.graygray100,
+                ),
+              ),
               const SizedBox(height: 16),
               Text(
-                '''
-At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque lorem ipsun dolor, lorem ipsum doooolor aaa''',
+                HtmlUnescape().convert(news.description),
                 maxLines: 3,
                 overflow: TextOverflow.ellipsis,
                 style: FigmaTextStyles.about.copyWith(
