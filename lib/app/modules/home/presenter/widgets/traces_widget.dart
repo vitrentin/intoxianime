@@ -11,6 +11,7 @@ class TracesWidget extends StatelessWidget {
         builder: (context, constrains) {
           return ListView.separated(
             itemCount: constrains.maxHeight ~/ 1,
+            physics: const NeverScrollableScrollPhysics(),
             itemBuilder: (context, index) => Align(
               alignment: Alignment.topLeft,
               child: Container(
