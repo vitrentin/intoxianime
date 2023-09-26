@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:intoxianime/app/modules/home/presenter/states/news_state.dart';
 
 import '../../data/service/news_services.dart';
+import '../states/news_state.dart';
 
 class NewsStore extends ValueNotifier<NewsState> {
   final NewsService _service;

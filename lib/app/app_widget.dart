@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intoxianime/app/utils/figma_styles.dart';
-  
+
 class AppWidget extends StatelessWidget {
   const AppWidget({super.key});
 

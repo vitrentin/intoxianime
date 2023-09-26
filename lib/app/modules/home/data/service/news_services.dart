@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:intoxianime/app/modules/home/data/adapters/news_adapter.dart';
-import 'package:intoxianime/app/modules/home/data/model/news_model.dart';
+
+import '../adapters/news_adapter.dart';
+import '../model/news_model.dart';
 
 class NewsService {
   final Dio _dio;

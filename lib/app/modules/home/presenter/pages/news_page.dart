@@ -125,8 +125,13 @@ class _LoadedNewsPageState extends State<_LoadedNewsPage> {
           itemCount: widget.state.news.length,
           cacheExtent: 1000,
           padding: EdgeInsets.only(bottom: isLoadedWithLoading ? 40 : 0),
-          itemBuilder: (context, index) =>
-              CardNewWidget(news: widget.state.news[index]),
+          itemBuilder: (context, index) => CardNewWidget(
+            news: widget.state.news[index],
+            onTap: () => Modular.to.pushNamed(
+              './details',
+              arguments: widget.state.news[index],
+            ),
+          ),
           separatorBuilder: (context, index) => const SizedBox(height: 40),
         ),
         if (widget.state is NewsLoadedWithLoading)
