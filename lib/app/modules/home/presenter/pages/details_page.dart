@@ -3,8 +3,13 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
-
+import 'package:flutter_html/flutter_html.dart' as dom;
+import 'package:flutter_html_audio/flutter_html_audio.dart';
+import 'package:flutter_html_iframe/flutter_html_iframe.dart';
+import 'package:flutter_html_svg/flutter_html_svg.dart';
+import 'package:flutter_html_table/flutter_html_table.dart';
+import 'package:flutter_html_video/flutter_html_video.dart';
+import 'package:html/dom.dart' as html;
 import '../../../../utils/figma_styles.dart';
 import '../../data/model/news_model.dart';
 
@@ -18,6 +23,13 @@ class DetailsPage extends StatefulWidget {
 
 class _DetailsPageState extends State<DetailsPage> {
   NewsModel get news => widget.news;
+
+  html.Document get document {
+    final doc = html.Document.html(news.aboutAnime);
+
+    return doc;
+  }
+
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.sizeOf(context).width - 64;
@@ -26,12 +38,12 @@ class _DetailsPageState extends State<DetailsPage> {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(32),
         child: BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 30, sigmaY: 47.58),
+          filter: ImageFilter.blur(sigmaX: 30, sigmaY: 30),
           child: Container(
             width: width,
             padding: const EdgeInsets.symmetric(horizontal: 16),
             decoration: const BoxDecoration(
-              color: Color(0x80F5F5F5),
+              color: Color.fromARGB(202, 245, 245, 245),
               boxShadow: [BoxShadow()],
             ),
             child: LayoutBuilder(
@@ -57,7 +69,7 @@ class _DetailsPageState extends State<DetailsPage> {
                       const SizedBox(height: 8),
                       Text(
                         'By: ${news.author}',
-                        style: FigmaTextStyles.history
+                        style: FigmaTextStyles.label
                             .copyWith(color: const Color(0xff2E0505)),
                       ),
                       const SizedBox(height: 16),
@@ -145,7 +157,26 @@ class _DetailsPageState extends State<DetailsPage> {
                           right: 16,
                           bottom: 20,
                         ),
-                        child: HtmlWidget(news.aboutAnime),
+                        child: dom.Html.fromDom(
+                          document: document,
+                          extensions: const [
+                            AudioHtmlExtension(),
+                            IframeHtmlExtension(),
+                            SvgHtmlExtension(),
+                            TableHtmlExtension(),
+                            VideoHtmlExtension(),
+                          ],
+                          style: {
+                            'img': dom.Style(
+                              // width: Width.auto(),
+                              width: dom.Width(300),
+                              height: dom.Height(400),
+                            ),
+                            'iframe': dom.Style(
+                              direction: TextDirection.ltr,
+                            ),
+                          },
+                        ),
                       ),
                     ),
                     Align(
