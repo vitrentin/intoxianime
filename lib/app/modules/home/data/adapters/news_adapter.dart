@@ -1,4 +1,4 @@
-import 'package:intoxianime/app/modules/home/data/model/news_model.dart';
+import '../model/news_model.dart';
 
 class NewsAdapter {
   static NewsModel fromJson(dynamic e) {
@@ -9,8 +9,9 @@ class NewsAdapter {
       urlImage: (e['yoast_head_json']?['og_image'] as List?)
               ?.firstOrNull['url'] ??
           'https://img.freepik.com/premium-vector/colorful-winter-cartoon-anime-error-404-page-found_150972-721.jpg?w=740',
-      aboutAnime: e['yoast_head'],
-      description: e['yoast_head_json']['og_description'],
+      aboutAnime: e['content']['rendered'] ?? '',
+      description: e['yoast_head_json']['og_description'] ?? '',
+      author: e['yoast_head_json']['author'] ?? '',
     );
   }
 

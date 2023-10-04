@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:intoxianime/app/modules/home/data/model/news_model.dart';
-import 'package:intoxianime/app/utils/figma_styles.dart';
 import 'package:html_unescape/html_unescape.dart';
 
+import '../../../../utils/figma_styles.dart';
+import '../../data/model/news_model.dart';
+
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 class CardNewWidget extends StatelessWidget {
   final NewsModel news;
+  final VoidCallback onTap;
   const CardNewWidget({
-    super.key,
+    Key? key,
     required this.news,
-  });
+    required this.onTap,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +69,7 @@ class CardNewWidget extends StatelessWidget {
               ),
               const SizedBox(height: 16),
               InkWell(
-                onTap: () {},
+                onTap: onTap,
                 splashFactory: NoSplash.splashFactory,
                 splashColor: Colors.transparent,
                 hoverColor: Colors.transparent,

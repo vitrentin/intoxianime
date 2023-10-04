@@ -7,6 +7,7 @@ class NewsModel {
   final String urlImage;
   final String aboutAnime;
   final String description;
+  final String author;
 
   const NewsModel({
     required this.id,
@@ -15,6 +16,7 @@ class NewsModel {
     required this.urlImage,
     required this.aboutAnime,
     required this.description,
+    required this.author,
   });
 
   String get dateTime {
@@ -29,6 +31,7 @@ class NewsModel {
     String? urlImage,
     String? aboutAnime,
     String? description,
+    String? author,
   }) {
     return NewsModel(
       id: id ?? this.id,
@@ -37,6 +40,7 @@ class NewsModel {
       urlImage: urlImage ?? this.urlImage,
       aboutAnime: aboutAnime ?? this.urlImage,
       description: description ?? this.description,
+      author: author ?? this.author,
     );
   }
 }
