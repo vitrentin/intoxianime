@@ -167,6 +167,11 @@ class _DetailsPageState extends State<DetailsPage> {
                             VideoHtmlExtension(),
                           ],
                           style: {
+                            '*': dom.Style(
+                              direction: TextDirection.ltr,
+                              alignment: Alignment.center,
+                              verticalAlign: dom.VerticalAlign.middle,
+                            ),
                             'img': dom.Style(
                               // width: Width.auto(),
                               width: dom.Width(300),
@@ -174,6 +179,12 @@ class _DetailsPageState extends State<DetailsPage> {
                             ),
                             'iframe': dom.Style(
                               direction: TextDirection.ltr,
+                              verticalAlign: dom.VerticalAlign.middle,
+                              alignment: Alignment.center,
+                              textAlign: TextAlign.center,
+                              width: dom.Width(
+                                MediaQuery.sizeOf(context).width - 52,
+                              ),
                             ),
                           },
                         ),
