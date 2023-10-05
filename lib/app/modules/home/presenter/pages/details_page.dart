@@ -91,11 +91,10 @@ class _DetailsPageState extends State<DetailsPage> {
             Align(
               alignment: Alignment.topLeft,
               child: Image.network(
-                news.urlImage,
+                'https://corsproxy.io/?${news.urlImage}',
                 height: 400,
                 width: double.infinity,
                 fit: BoxFit.cover,
-                filterQuality: FilterQuality.high,
               ),
             ),
             Material(
@@ -159,12 +158,27 @@ class _DetailsPageState extends State<DetailsPage> {
                         ),
                         child: dom.Html.fromDom(
                           document: document,
-                          extensions: const [
-                            AudioHtmlExtension(),
-                            IframeHtmlExtension(),
-                            SvgHtmlExtension(),
-                            TableHtmlExtension(),
-                            VideoHtmlExtension(),
+                          extensions: [
+                            dom.ImageExtension(
+                              builder: (p0) {
+                                final link = p0.attributes['src'];
+                                return Center(
+                                  child: Container(
+                                    constraints: const BoxConstraints(
+                                      maxHeight: 500,
+                                    ),
+                                    child: Image.network(
+                                      'https://corsproxy.io/?$link',
+                                    ),
+                                  ),
+                                );
+                              },
+                            ),
+                            const AudioHtmlExtension(),
+                            const IframeHtmlExtension(),
+                            const SvgHtmlExtension(),
+                            const TableHtmlExtension(),
+                            const VideoHtmlExtension(),
                           ],
                           style: {
                             '*': dom.Style(
@@ -176,6 +190,7 @@ class _DetailsPageState extends State<DetailsPage> {
                               // width: Width.auto(),
                               width: dom.Width(300),
                               height: dom.Height(400),
+                              textAlign: TextAlign.center,
                             ),
                             'iframe': dom.Style(
                               direction: TextDirection.ltr,

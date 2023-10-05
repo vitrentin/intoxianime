@@ -46,7 +46,7 @@ class CardNewWidget extends StatelessWidget {
                 ),
                 clipBehavior: Clip.antiAlias,
                 child: Image.network(
-                  news.urlImage,
+                  'https://corsproxy.io/?${news.urlImage}',
                   width: double.infinity,
                   fit: BoxFit.fitWidth,
                 ),
